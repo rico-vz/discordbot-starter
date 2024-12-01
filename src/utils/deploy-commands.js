@@ -29,16 +29,19 @@ for (const folder of commandFolders) {
 // Construct and prepare an instance of the REST module
 const rest = new REST().setToken(process.env.BOT_TOKEN);
 
+// Determine if the commands should be deployed globally or to a specific guild
+const isGlobal = process.argv[2] === 'global';
+const route = isGlobal
+    ? Routes.applicationCommands(process.env.BOT_APPLICATION_ID)
+    : Routes.applicationGuildCommands(process.env.BOT_APPLICATION_ID, developmentGuildId);
+
 // and deploy your commands!
 (async () => {
     try {
         logger(`Started refreshing ${commands.length} application (/) commands.`, 'info');
 
         // The put method is used to fully refresh all commands in the guild with the current set
-        const data = await rest.put(
-            Routes.applicationGuildCommands(process.env.BOT_APPLICATION_ID, developmentGuildId),
-            { body: commands }
-        );
+        const data = await rest.put(route, { body: commands });
 
         logger(`Successfully reloaded ${data.length} (/) commands.`, 'success');
     } catch (error) {
