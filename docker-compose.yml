@@ -7,3 +7,4 @@ services:
     volumes:
       - .:/usr/src/app
     command: npm run dev
+    restart: always
