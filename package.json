@@ -1,0 +1,25 @@
+{
+  "name": "discordbot-starter",
+  "version": "1.0.0",
+  "description": "🐇 A Basic Discord Bot Starter template",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "nodemon src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rico-vz/discordbot-starter.git"
+  },
+  "author": "Rico van Zelst",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rico-vz/discordbot-starter/issues"
+  },
+  "homepage": "https://github.com/rico-vz/discordbot-starter#readme",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "discord.js": "^14.16.3",
+    "dotenv": "^16.4.5",
+    "nodemon": "^3.1.7"
+  }
+}
