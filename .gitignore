@@ -132,3 +132,4 @@ dist
 # Secrets
 .env
 .env.local
+config.json

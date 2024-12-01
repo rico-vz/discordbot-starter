@@ -1,23 +1,14 @@
-const { Client, IntentsBitField, ActivityType } = require("discord.js");
-const chalk = require("chalk");
-const logger = require("./logger");
+const { Client, GatewayIntentBits } = require("discord.js");
 require("dotenv").config();
+const logger = require("./utils/logger");
 
+logger("[Discord Bot Starter by github.com/rico-vz]");
+
+// Create a new client instance with the intents
+// Make sure to enable the GuildMembers intent from the Discord Developer Portal
 const client = new Client({
-  intents: [IntentsBitField.Flags.Guilds, IntentsBitField.Flags.GuildMembers],
+  intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers],
 });
 
-logger("Starting bot...", "info");
-client.login(process.env.BOT_TOKEN);
-
-client.on("ready", (bot) => {
-  bot.user.setActivity({
-    name: "(/) commands",
-    type: ActivityType.Watching,
-  });
-  logger(`Logged in as ${bot.user.tag}`, "success");
-  logger(
-    `Detected ${bot.guilds.cache.size} servers and ${bot.users.cache.size} users`,
-    "info"
-  );
-});
+// Loads all handlers in ./handlers
+require("./handlers")(client);

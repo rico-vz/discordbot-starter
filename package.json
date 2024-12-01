@@ -1,10 +1,11 @@
 {
   "name": "discordbot-starter",
   "version": "1.0.0",
-  "description": "🐇 A Basic Discord Bot Starter template",
+  "description": "🐇 A Basic Discord Bot Starter template. 🐳 Docker ready. ",
   "main": "src/index.js",
   "scripts": {
-    "dev": "nodemon src/index.js"
+    "dev": "nodemon src/index.js",
+    "deploy-commands": "node src/utils/deploy-commands.js"
   },
   "repository": {
     "type": "git",
