@@ -1,0 +1,9 @@
+services:
+  bot:
+    build: .
+    environment:
+      - BOT_TOKEN=${BOT_TOKEN}
+      - BOT_APPLICATION_ID=${BOT_APPLICATION_ID}
+    volumes:
+      - .:/usr/src/app
+    command: npm run dev
